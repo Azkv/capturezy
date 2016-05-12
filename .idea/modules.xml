@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CapturezyProject.iml" filepath="$PROJECT_DIR$/CapturezyProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/capturezy/capturezy.iml" filepath="$PROJECT_DIR$/capturezy/capturezy.iml" />
+    </modules>
+  </component>
+</project>
