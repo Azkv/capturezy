@@ -26,7 +26,7 @@ intent.putExtra("filename",imageFileName);
 intent.putExtra("extension","jpg");
 startActivityForResult(intent,REQUEST_CAMERA);
 ```
-Starting with config
+or start with config
 ```
 String imageFileName = "myfilename";
 File storageDir = Environment.getExternalStorageDirectory();
@@ -42,6 +42,17 @@ intent.putExtra("extension","jpg");
 intent.putExtra("config", config);
 startActivityForResult(intent,REQUEST_CAMERA);
 ```
+Config options:
+```
+public Config()                                             //EMPTY - used mostly just to generate thumbnails
+public Config(int width, int height)                        //SPECIFIC OUTPUT SIZE
+public Config(float scaleX, float scaleY)                   //SCALED
+public Config(int x, int y, int w, int h)                   //CROPPED
+public void generateThumbnail(int width, int height)        //THUMBNAIL SPECIFIC SIZE
+public void generateThumbnail(float scaleX, float scaleY)   //THUMBNAIL SCALED
+
+```
+
 And simply catch the bitmaps in the onActivityResult() like this
 ```
 @Override
