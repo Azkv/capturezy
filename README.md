@@ -17,52 +17,49 @@ in your manifest add the activity
 
 Starting image capture example
 ```
-
-        String imageFileName = "myfilename";
-        File storageDir = Environment.getExternalStorageDirectory();
-        File realStorage = new File(storageDir+"/mydir");
-        Intent intent = new Intent(this,CameraPhotoCapture.class);
-        intent.putExtra("path",realStorage.getAbsolutePath());
-        intent.putExtra("filename",imageFileName);
-        intent.putExtra("extension","jpg");
-        startActivityForResult(intent,REQUEST_CAMERA);
+String imageFileName = "myfilename";
+File storageDir = Environment.getExternalStorageDirectory();
+File realStorage = new File(storageDir+"/mydir");
+Intent intent = new Intent(this,CameraPhotoCapture.class);
+intent.putExtra("path",realStorage.getAbsolutePath());
+intent.putExtra("filename",imageFileName);
+intent.putExtra("extension","jpg");
+startActivityForResult(intent,REQUEST_CAMERA);
 ```
 Starting with config
 ```
-
-        String imageFileName = "myfilename";
-        File storageDir = Environment.getExternalStorageDirectory();
-        File realStorage = new File(storageDir+"/mydir");
-        //scale the resulting photo by 0.5 x 0.5
-        Config config = new Config(0.5f,0.5f);
-        //generate a thumbnail for our photo of size 100,100
-        config.generateThumbnail(100,100);
-        Intent intent = new Intent(this,CameraPhotoCapture.class);
-        intent.putExtra("path",realStorage.getAbsolutePath());
-        intent.putExtra("filename",imageFileName);
-        intent.putExtra("extension","jpg");
-        intent.putExtra("config", config);
-        startActivityForResult(intent,REQUEST_CAMERA);
+String imageFileName = "myfilename";
+File storageDir = Environment.getExternalStorageDirectory();
+File realStorage = new File(storageDir+"/mydir");
+//scale the resulting photo by 0.5 x 0.5
+Config config = new Config(0.5f,0.5f);
+//generate a thumbnail for our photo of size 100,100
+config.generateThumbnail(100,100);
+Intent intent = new Intent(this,CameraPhotoCapture.class);
+intent.putExtra("path",realStorage.getAbsolutePath());
+intent.putExtra("filename",imageFileName);
+intent.putExtra("extension","jpg");
+intent.putExtra("config", config);
+startActivityForResult(intent,REQUEST_CAMERA);
 ```
 And simply catch the bitmaps in the onActivityResult() like this
 ```
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+if (resultCode != RESULT_OK) return;
 
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) return;
-
-        if(requestCode == REQUEST_CAMERA)
-        {
-            Result rez = (Result)data.getSerializableExtra("result");
-            if(rez.getResultImagePath() != null)
-            {
-                Bitmap bmp = BitmapFactory.decodeFile(rez.getResultImagePath());
-                Bitmap thumbnail = BitmapFactory.decodeFile(rez.getResultThumbnailPath());
-            }
-
-        }
-        super.onActivityResult(requestCode, resultCode, data);
+if(requestCode == REQUEST_CAMERA)
+{
+    Result rez = (Result)data.getSerializableExtra("result");
+    if(rez.getResultImagePath() != null)
+    {
+        Bitmap bmp = BitmapFactory.decodeFile(rez.getResultImagePath());
+        Bitmap thumbnail = BitmapFactory.decodeFile(rez.getResultThumbnailPath());
     }
+
+}
+super.onActivityResult(requestCode, resultCode, data);
+}
 ```
 
 
