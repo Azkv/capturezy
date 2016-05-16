@@ -12,8 +12,7 @@ compile 'com.azkv:capturezy:0.2.1@aar'
 <b>Usage</b>
 in your manifest add the activity
 <code>
-
-        <activity android:name="com.azarkovic.capturezy.CameraPhotoCapture"></activity>
+<activity android:name="com.azarkovic.capturezy.CameraPhotoCapture"></activity>
 </code>
 Starting image capture example
 <code>
