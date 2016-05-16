@@ -72,6 +72,7 @@ super.onActivityResult(requestCode, resultCode, data);
 }
 ```
 
-
+##Copyright
+You can use the library in both commercial and private projects free of charge.
 
 
