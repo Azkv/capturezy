@@ -5,14 +5,12 @@ Building any app that needed a camera image capturing I've had headaches over an
 I've decided to pull all the neccessary utilities into this small but useful library.
 
 <b>Usage</b>
-
 in your manifest add the activity
 <code>
+
         <activity android:name="com.azarkovic.capturezy.CameraPhotoCapture"></activity>
 </code>
-
 Starting image capture example
-
 <code>
 
         String imageFileName = "myfilename";
@@ -24,5 +22,44 @@ Starting image capture example
         intent.putExtra("extension","jpg");
         startActivityForResult(intent,REQUEST_CAMERA);
 </code>
+Starting with config
+<code>
+
+        String imageFileName = "myfilename";
+        File storageDir = Environment.getExternalStorageDirectory();
+        File realStorage = new File(storageDir+"/mydir");
+        //scale the resulting photo by 0.5 x 0.5
+        Config config = new Config(0.5f,0.5f);
+        //generate a thumbnail for our photo of size 100,100
+        config.generateThumbnail(100,100);
+        Intent intent = new Intent(this,CameraPhotoCapture.class);
+        intent.putExtra("path",realStorage.getAbsolutePath());
+        intent.putExtra("filename",imageFileName);
+        intent.putExtra("extension","jpg");
+        intent.putExtra("config", config);
+        startActivityForResult(intent,REQUEST_CAMERA);
+</code>
+And simply catch the bitmaps in the onActivityResult() like this
+<code>
+
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) return;
+
+        if(requestCode == REQUEST_CAMERA)
+        {
+            Result rez = (Result)data.getSerializableExtra("result");
+            if(rez.getResultImagePath() != null)
+            {
+                Bitmap bmp = BitmapFactory.decodeFile(rez.getResultImagePath());
+                Bitmap thumbnail = BitmapFactory.decodeFile(rez.getResultThumbnailPath());
+            }
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+</code>
+
+
 
 
