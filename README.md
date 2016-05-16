@@ -50,7 +50,6 @@ public Config(float scaleX, float scaleY)                   //SCALED
 public Config(int x, int y, int w, int h)                   //CROPPED
 public void generateThumbnail(int width, int height)        //THUMBNAIL SPECIFIC SIZE
 public void generateThumbnail(float scaleX, float scaleY)   //THUMBNAIL SCALED
-
 ```
 
 And simply catch the bitmaps in the onActivityResult() like this
