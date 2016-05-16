@@ -79,6 +79,10 @@ public class BitmapUtils
     {
         return Bitmap.createScaledBitmap(bitmap,(int)(bitmap.getWidth()*scaleX),(int)(bitmap.getHeight()*scaleY),true);
     }
+    public static Bitmap crop(Bitmap bitmap, int x, int y, int w, int h)
+    {
+        return Bitmap.createBitmap(bitmap,x,y,w,h);
+    }
     public static Bitmap rotate(Bitmap bitmap, String path)
     {
         ExifInterface exif = null;

@@ -123,10 +123,10 @@ public class CameraPhotoCapture extends AppCompatActivity {
             return false;
         }
     }
-    public synchronized Bitmap handleConfig(final Config config, final Bitmap bmp)
-    {
+    public synchronized Bitmap handleConfig(final Config config, final Bitmap bmp) throws Exception {
         if(config == null)return bmp;
         Bitmap rezBmp = null;
+
         switch(config.getType())
         {
             case RESIZE:
@@ -134,6 +134,22 @@ public class CameraPhotoCapture extends AppCompatActivity {
                 break;
             case SCALE:
                 rezBmp =  BitmapUtils.scale(bmp,config.getScaleX(),config.getScaleY());
+                break;
+
+            case EMPTY:
+                rezBmp = bmp;
+                break;
+
+            case CROP:
+                if((config.getX() + config.getWidth() > rezBmp.getWidth()) || (config.getY() + config.getHeight() > rezBmp.getHeight()))
+                {
+                    throw new Exception("Invalid parameters for cropping, out of bounds.");
+                }
+                else
+                {
+                    rezBmp = BitmapUtils.crop(bmp,config.getX(),config.getY(),config.getWidth(),config.getHeight());
+                }
+
                 break;
         }
 
