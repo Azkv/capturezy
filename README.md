@@ -8,14 +8,13 @@ I've decided to pull all the neccessary utilities into this small but useful lib
 
 in your manifest add the activity
 <code>
-
         <activity android:name="com.azarkovic.capturezy.CameraPhotoCapture"></activity>
-
 </code>
 
 Starting image capture example
-<br>
+
 <code>
+
         String imageFileName = "myfilename";
         File storageDir = Environment.getExternalStorageDirectory();
         File realStorage = new File(storageDir+"/mydir");
