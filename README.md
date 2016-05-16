@@ -7,13 +7,13 @@ I've decided to pull all the neccessary utilities into this small but useful lib
 <b>Installation</b>
 <code>
 compile 'com.azkv:capturezy:0.2.1@aar'
-</code>
+
 
 <b>Usage</b>
 in your manifest add the activity
 <code>
 <activity android:name="com.azarkovic.capturezy.CameraPhotoCapture"></activity>
-</code>
+
 Starting image capture example
 <code>
 
