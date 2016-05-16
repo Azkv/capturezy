@@ -4,6 +4,11 @@
 Building any app that needed a camera image capturing I've had headaches over and over. Wrong URIs, wrong paths, wrong photo orientation, too large files to decode to bitmaps, etc.. the list goes on.
 I've decided to pull all the neccessary utilities into this small but useful library.
 
+<b>Installation</b>
+<code>
+compile 'com.azkv:capturezy:0.2.1@aar'
+</code>
+
 <b>Usage</b>
 in your manifest add the activity
 <code>
