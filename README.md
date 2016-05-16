@@ -5,17 +5,18 @@ Building any app that needed a camera image capturing I've had headaches over an
 I've decided to pull all the neccessary utilities into this small but useful library.
 
 <b>Installation</b>
-<code>
+```
 compile 'com.azkv:capturezy:0.2.1@aar'
-
+```
 
 <b>Usage</b>
 in your manifest add the activity
-<code>
+``` 
 <activity android:name="com.azarkovic.capturezy.CameraPhotoCapture"></activity>
+```
 
 Starting image capture example
-<code>
+```
 
         String imageFileName = "myfilename";
         File storageDir = Environment.getExternalStorageDirectory();
@@ -25,9 +26,9 @@ Starting image capture example
         intent.putExtra("filename",imageFileName);
         intent.putExtra("extension","jpg");
         startActivityForResult(intent,REQUEST_CAMERA);
-</code>
+```
 Starting with config
-<code>
+```
 
         String imageFileName = "myfilename";
         File storageDir = Environment.getExternalStorageDirectory();
@@ -42,9 +43,9 @@ Starting with config
         intent.putExtra("extension","jpg");
         intent.putExtra("config", config);
         startActivityForResult(intent,REQUEST_CAMERA);
-</code>
+```
 And simply catch the bitmaps in the onActivityResult() like this
-<code>
+```
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -62,7 +63,7 @@ And simply catch the bitmaps in the onActivityResult() like this
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-</code>
+```
 
 
 
