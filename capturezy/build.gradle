@@ -20,23 +20,7 @@ android {
     }
 }
 apply plugin: 'maven'
-task writeNewPom << {
-    pom {
-        project {
-            groupId 'com.azkv'
-            artifactId 'capturezy'
-            version '0.2.1'
 
-            inceptionYear '2016'
-            licenses {
-                license {
-                    name 'MIT'
-                    url 'http://opensource.org/licenses/MIT'
-                    distribution 'repo'
-                }
-            }
-        }
-    }.writeTo("$buildDir/0.2.1.pom")
 }
 apply plugin: 'com.jfrog.bintray'
 dependencies {
@@ -44,22 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }
-bintray {
-    user = 'azkv'
-    key = '327d19f029e0b92676bd8206278973289400fd6b'
-    publish = true
-    pkg {
-        repo = 'com.azkv'
-        name = 'capturezy'
-        userOrg = 'azkv'
-        licenses = ['Copyfree']
-        vcsUrl = 'https://github.com/Azkv/capturezy.git'
-        version {
-            name = '0.2.1'
-            desc = 'Capturezy update, minsdk changed to 16 from 19'
-            released  = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZ").format(new Date())
-            vcsTag = '1.3.0'
-        }
-    }
 }
 
